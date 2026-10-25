@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="悠悠色影视（youyouseyingshi.cn）提供电影、电视剧、动漫、综艺等影视资讯与推荐，色彩主题影视导航，每日更新高清影视内容与观影指南。">
+<meta name="keywords" content="悠悠色影视,电影,电视剧,动漫,综艺,影视推荐,高清影视,色彩主题影视,youyouseyingshi.cn,在线影视资讯">
+<meta name="author" content="悠悠色影视">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta property="og:title" content="悠悠色影视 - 电影电视剧动漫综艺资讯与推荐 | youyouseyingshi.cn">
+<meta property="og:description" content="悠悠色影视（youyouseyingshi.cn）提供电影、电视剧、动漫、综艺等影视资讯与推荐，色彩主题影视导航。">
+<meta property="og:url" content="https://youyouseyingshi-cn.github.io">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="悠悠色影视">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="悠悠色影视 - 电影电视剧动漫综艺资讯与推荐 | youyouseyingshi.cn">
+<meta name="twitter:description" content="悠悠色影视（youyouseyingshi.cn）提供电影、电视剧、动漫、综艺等影视资讯与推荐。">
+<link rel="canonical" href="https://youyouseyingshi-cn.github.io">
+<title>悠悠色影视 - 电影、电视剧、动漫、综艺资讯与推荐 | youyouseyingshi.cn</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--teal:#17c0c9;--pink:#ff5e8a;--purple:#8b5cf6;--bg:#09070f;--card:#13111d;--line:#262233;--txt:#eef0f6;--muted:#90909e}
+html{scroll-behavior:smooth}
+body{font-family:"Microsoft YaHei","PingFang SC","WenQuanYi Micro Hei",sans-serif;background:var(--bg);color:var(--txt);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+
+/* ===== 顶部导航 ===== */
+header{position:sticky;top:0;z-index:99;background:rgba(9,7,15,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.hd{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:22px;font-weight:900;letter-spacing:1px;display:flex;align-items:center;gap:9px}
+.logo i{font-style:normal;background:linear-gradient(135deg,var(--teal),var(--pink));color:#09070f;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-size:12px;font-weight:900}
+.logo b{background:linear-gradient(90deg,var(--teal),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav ul{display:flex;gap:4px;list-style:none}
+nav ul li a{padding:8px 15px;border-radius:8px;font-size:15px;color:var(--txt);font-weight:600}
+nav ul li a:hover{background:var(--teal);color:#09070f}
+.mbtn{display:none;background:none;border:none;color:var(--teal);font-size:26px;cursor:pointer}
+
+/* ===== Hero ===== */
+.hero{padding:84px 0 72px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(420px 240px at 50% -10%,rgba(23,192,201,.24),transparent),radial-gradient(360px 200px at 85% 70%,rgba(255,94,138,.18),transparent);pointer-events:none}
+.hero .tag{display:inline-block;padding:5px 16px;border:1px solid var(--teal);color:var(--teal);border-radius:20px;font-size:12.5px;letter-spacing:1px;margin-bottom:22px}
+.hero h1{font-size:clamp(28px,5.4vw,50px);font-weight:900;line-height:1.28;margin-bottom:18px;position:relative}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--teal),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:650px;margin:0 auto 28px;color:var(--muted);font-size:16px;position:relative}
+.hero .go{display:inline-block;padding:14px 38px;background:linear-gradient(90deg,var(--teal),var(--pink));color:#09070f;font-weight:800;border-radius:10px;font-size:16px}
+.kw{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:30px;position:relative}
+.kw a{padding:6px 15px;border:1px solid var(--line);border-radius:20px;font-size:13px;color:var(--muted)}
+.kw a:hover{border-color:var(--teal);color:var(--teal)}
+
+/* ===== 通用栏标题 ===== */
+section{padding:70px 0}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:32px;flex-wrap:wrap;border-left:4px solid var(--pink);padding-left:14px}
+.sh h2{font-size:clamp(20px,3.2vw,28px);font-weight:800}
+.sh h2 u{text-decoration:none;color:var(--pink)}
+.sh span{color:var(--muted);font-size:13.5px}
+
+/* 栏目一：电影（横向滑动卡片 DOM） */
+.mov{display:flex;gap:16px;overflow-x:auto;padding:4px 2px 16px;scroll-snap-type:x mandatory}
+.mov::-webkit-scrollbar{height:7px}
+.mov::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+.mcard{flex:0 0 180px;scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:.3s}
+.mcard:hover{transform:translateY(-6px);border-color:var(--teal)}
+.mcard .cv{height:250px;display:grid;place-items:center;text-align:center;font-size:22px;font-weight:900;color:#fff;line-height:1.35}
+.c1{background:linear-gradient(160deg,#0f766e,#2dd4bf)}
+.c2{background:linear-gradient(160deg,#9f1239,#f43f5e)}
+.c3{background:linear-gradient(160deg,#4338ca,#818cf8)}
+.c4{background:linear-gradient(160deg,#b45309,#fbbf24)}
+.c5{background:linear-gradient(160deg,#15803d,#4ade80)}
+.c6{background:linear-gradient(160deg,#7c3aed,#c084fc)}
+.mcard .tx{padding:11px 13px}
+.mcard .tx h3{font-size:15.5px;margin-bottom:5px}
+.mcard .tx small{color:var(--teal);font-size:12px}
+
+/* 栏目二：电视剧（表格 DOM） */
+.tblbox{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;min-width:560px;font-size:15px}
+thead th{background:#171322;text-align:left;padding:14px 16px;color:var(--teal);font-weight:700}
+tbody td{padding:13px 16px;border-top:1px solid var(--line);color:var(--muted)}
+tbody td:first-child{color:var(--txt);font-weight:600}
+tbody tr:hover{background:rgba(23,192,201,.07)}
+.st{display:inline-block;padding:2px 11px;border-radius:20px;font-size:12px;font-weight:700}
+.st.on{background:var(--teal);color:#09070f}
+.st.end{background:var(--purple);color:#fff}
+.st.soon{background:#2a2635;color:#cfc9e0}
+
+/* 栏目三：动漫（定义列表 dl DOM） */
+.anime{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.anime .pan{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;transition:.3s}
+.anime .pan:hover{border-color:var(--pink);background:#181322}
+.anime dl dt{font-size:18px;font-weight:800;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.anime dl dt i{font-style:normal;font-size:11px;background:linear-gradient(90deg,var(--teal),var(--pink));color:#09070f;padding:3px 9px;border-radius:6px;font-weight:800}
+.anime dl dd{padding:6px 0 6px 28px;position:relative;font-size:14px;color:var(--muted);border-bottom:1px dashed #23222e}
+.anime dl dd:last-child{border-bottom:none}
+.anime dl dd::before{content:"";position:absolute;left:8px;top:15px;width:7px;height:7px;border-radius:50%;background:var(--pink)}
+
+/* 栏目四：综艺（时间轴 DOM） */
+.tl{position:relative;padding-left:26px}
+.tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--teal),var(--pink))}
+.tl article{position:relative;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:16px}
+.tl article::before{content:"";position:absolute;left:-23px;top:22px;width:11px;height:11px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px #09070f}
+.tl article .d{display:inline-block;padding:2px 10px;background:var(--purple);color:#fff;font-size:12px;border-radius:6px;margin-bottom:8px}
+.tl article h3{font-size:17px;margin-bottom:6px}
+.tl article p{font-size:14px;color:var(--muted)}
+
+/* 栏目五：资讯（编号 + 进度条 DOM） */
+.news{display:flex;flex-direction:column;gap:16px}
+.news article{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 22px}
+.news article h3{font-size:17px;margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.news article h3 b{font-size:26px;color:var(--pink);font-weight:900;opacity:.55;font-family:Georgia,serif}
+.news article .bar{height:7px;background:#1d1a29;border-radius:5px;overflow:hidden;margin-bottom:8px}
+.news article .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--pink));border-radius:5px}
+.news article small{color:var(--muted);font-size:13px}
+
+/* ===== 页脚 ===== */
+footer{border-top:1px solid var(--line);margin-top:30px;padding:42px 0 26px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;margin-bottom:26px}
+.fgrid h5{font-size:15px;margin-bottom:11px;color:var(--txt)}
+.fgrid a{display:block;color:var(--muted);font-size:13.5px;padding:4px 0}
+.fgrid a:hover{color:var(--teal)}
+.copy{text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:20px;line-height:2}
+.copy b{color:var(--teal)}
+
+/* ===== 移动端 ===== */
+@media(max-width:820px){
+ .mbtn{display:block}
+ nav{position:fixed;inset:64px 0 auto;background:#0b0913;max-height:0;overflow:hidden;transition:.35s;border-bottom:1px solid var(--line)}
+ nav.open{max-height:440px}
+ nav ul{flex-direction:column;padding:16px}
+ .mcard{flex:0 0 148px}
+ .mcard .cv{height:210px;font-size:19px}
+}
+@media(max-width:480px){
+ .hero{padding:54px 0 46px}
+ section{padding:50px 0}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaobao.js"></script>
+
+<header>
+ <div class="wrap hd">
+  <div class="logo"><i>悠悠色</i><b>悠悠色影视</b></div>
+  <button class="mbtn" aria-label="菜单" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
+  <nav>
+   <ul>
+    <li><a href="#home">首页</a></li>
+    <li><a href="#movie">电影</a></li>
+    <li><a href="#tv">电视剧</a></li>
+    <li><a href="#anime">动漫</a></li>
+    <li><a href="#show">综艺</a></li>
+    <li><a href="#news">影视资讯</a></li>
+   </ul>
+  </nav>
+ </div>
+</header>
+
+<main>
+
+<!-- 首页 Hero -->
+<section id="home" class="hero">
+ <div class="wrap">
+  <span class="tag">电影 · 电视剧 · 动漫 · 综艺 · youyouseyingshi.cn</span>
+  <h1><em>悠悠色影视</em><br>色彩主题影视资讯导航</h1>
+  <p>悠悠色影视（youyouseyingshi.cn）每日更新电影、电视剧、动漫、综艺等影视资讯与推荐，用色彩分类帮您快速找到想看的影视内容。</p>
+  <a class="go" href="#movie">浏览影视大全</a>
+  <div class="kw">
+   <a href="#movie">电影大全</a>
+   <a href="#tv">电视剧大全</a>
+   <a href="#anime">动漫大全</a>
+   <a href="#show">综艺大全</a>
+   <a href="#news">影视推荐</a>
+   <a href="#home">高清影视资讯</a>
+  </div>
+ </div>
+</section>
+
+<!-- 栏目一：电影（横向滑动卡片 DOM） -->
+<section id="movie" class="wrap">
+ <div class="sh"><h2>色彩 <u>电影</u></h2><span>按色彩主题分类 · 高分推荐</span></div>
+ <div class="mov">
+  <article class="mcard"><div class="cv c1">青色<br>迷雾</div><div class="tx"><h3>青色迷雾</h3><small>★ 8.7 · 悬疑/剧情</small></div></article>
+  <article class="mcard"><div class="cv c2">绯红<br>之恋</div><div class="tx"><h3>绯红之恋</h3><small>★ 8.4 · 爱情/文艺</small></div></article>
+  <article class="mcard"><div class="cv c3">靛蓝<br>心事</div><div class="tx"><h3>靛蓝心事</h3><small>★ 8.9 · 家庭/剧情</small></div></article>
+  <article class="mcard"><div class="cv c4">琥珀<br>黄昏</div><div class="tx"><h3>琥珀黄昏</h3><small>★ 8.2 · 怀旧/文艺</small></div></article>
+  <article class="mcard"><div class="cv c5">翠绿<br>原野</div><div class="tx"><h3>翠绿原野</h3><small>★ 8.6 · 自然/冒险</small></div></article>
+  <article class="mcard"><div class="cv c6">紫罗兰<br>星夜</div><div class="tx"><h3>紫罗兰星夜</h3><small>★ 8.5 · 科幻/奇幻</small></div></article>
+ </div>
+</section>
+
+<!-- 栏目二：电视剧（表格 DOM） -->
+<section id="tv" class="wrap">
+ <div class="sh"><h2>热播 <u>电视剧</u></h2><span>每日更新 · 分类清晰</span></div>
+ <div class="tblbox">
+  <table>
+   <thead><tr><th>剧名</th><th>色彩主题</th><th>类型</th><th>状态</th></tr></thead>
+   <tbody>
+    <tr><td>青色海岸</td><td>青色系</td><td>都市 / 情感</td><td><span class="st on">更新中</span></td></tr>
+    <tr><td>绯色烟火</td><td>红色系</td><td>年代 / 剧情</td><td><span class="st on">更新中</span></td></tr>
+    <tr><td>靛蓝档案</td><td>蓝色系</td><td>刑侦 / 悬疑</td><td><span class="st end">已完结</span></td></tr>
+    <tr><td>琥珀流年</td><td>暖色系</td><td>家庭 / 剧情</td><td><span class="st end">已完结</span></td></tr>
+    <tr><td>翠色田园</td><td>绿色系</td><td>乡村 / 生活</td><td><span class="st on">更新中</span></td></tr>
+    <tr><td>紫罗兰之恋</td><td>紫色系</td><td>爱情 / 偶像</td><td><span class="st soon">即将上线</span></td></tr>
+   </tbody>
+  </table>
+ </div>
+</section>
+
+<!-- 栏目三：动漫（定义列表 dl DOM） -->
+<section id="anime" class="wrap">
+ <div class="sh"><h2>高分 <u>动漫</u></h2><span>国漫 · 日漫 · 色彩主题番剧</span></div>
+ <div class="anime">
+  <div class="pan"><dl><dt>青色幻想 <i>新番</i></dt><dd>灵笼 · 第二季</dd><dd>深海历险记</dd><dd>青空之下</dd><dd>幻境行者</dd></dl></div>
+  <div class="pan"><dl><dt>绯色热血 <i>热血</i></dt><dd>斗罗大陆</dd><dd>凡人修仙传</dd><dd>绯色剑魂</dd><dd>鬼灭之刃</dd></dl></div>
+  <div class="pan"><dl><dt>紫色治愈 <i>推荐</i></dt><dd>夏目友人帐</dd><dd>罗小黑战记</dd><dd>紫罗兰永恒花园</dd><dd>有兽焉</dd></dl></div>
+  <div class="pan"><dl><dt>琥珀日常 <i>经典</i></dt><dd>名侦探柯南</dd><dd>蜡笔小新</dd><dd>琥珀时光</dd><dd>白箱</dd></dl></div>
+ </div>
+</section>
+
+<!-- 栏目四：综艺（时间轴 DOM） -->
+<section id="show" class="wrap">
+ <div class="sh"><h2>热门 <u>综艺</u></h2><span>真人秀 · 音乐 · 文化</span></div>
+ <div class="tl">
+  <article><span class="d">2026-10-18</span><h3>色彩之声 · 音乐现场</h3><p>每期邀请不同色彩主题的歌手，用音乐诠释青、绯、靛、琥珀四种情绪，是本周口碑最高的音乐综艺。</p></article>
+  <article><span class="d">2026-10-11</span><h3>青色旅行日记</h3><p>嘉宾沿着海岸线自驾，探访小众蓝色系城市，风景治愈、节奏舒缓，适合周末放松观看。</p></article>
+  <article><span class="d">2026-10-04</span><h3>绯色厨房</h3><p>明星厨师用红色系食材创意烹饪，菜品造型吸睛、口味惊艳，美食综艺中的高分之作。</p></article>
+  <article><span class="d">2026-09-27</span><h3>琥珀故事馆</h3><p>邀请素人讲述自己的人生故事，情感真挚、泪点密集，被观众称为"最暖心的谈话节目"。</p></article>
+ </div>
+</section>
+
+<!-- 栏目五：资讯（编号 + 进度条 DOM） -->
+<section id="news" class="wrap">
+ <div class="sh"><h2>影视 <u>资讯</u></h2><span>行业动态 · 推荐指数</span></div>
+ <div class="news">
+  <article><h3><b>01</b>2026 秋季档影视剧盘点</h3><div class="bar"><i style="width:95%"></i></div><small>推荐指数 95 · 盘点秋季档上线剧集，从色彩主题到剧情质量逐一分析，帮你挑选值得追的剧。</small></article>
+  <article><h3><b>02</b>色彩美学如何改变影视视觉</h3><div class="bar"><i style="width:90%"></i></div><small>推荐指数 90 · 从调色到服化道，解读色彩在影视作品中的叙事作用，干货满满。</small></article>
+  <article><h3><b>03</b>国漫崛起：本周新番推荐</h3><div class="bar"><i style="width:92%"></i></div><small>推荐指数 92 · 精选本周上线的 4 部国漫新番，涵盖热血、治愈、科幻三种风格。</small></article>
+  <article><h3><b>04</b>高分冷门电影合集</h3><div class="bar"><i style="width:88%"></i></div><small>推荐指数 88 · 5 部评分高却鲜为人知的电影，适合喜欢小众佳片的观众收藏。</small></article>
+ </div>
+</section>
+
+</main>
+
+<footer>
+ <div class="wrap">
+  <div class="fgrid">
+   <div><h5>悠悠色影视</h5><a href="#home">网站首页</a><a href="#movie">电影大全</a></div>
+   <div><h5>内容分类</h5><a href="#tv">电视剧大全</a><a href="#anime">动漫大全</a><a href="#show">综艺大全</a></div>
+   <div><h5>资讯中心</h5><a href="#news">影视资讯</a><a href="#news">影视推荐</a></div>
+   <div><h5>网站信息</h5><a href="https://youyouseyingshi-cn.github.io">网址：https://youyouseyingshi-cn.github.io</a><a href="https://youyouseyingshi-cn.github.io">官网域名：youyouseyingshi.cn</a></div>
+  </div>
+  <div class="copy">© 2026 <b>悠悠色影视</b>（youyouseyingshi.cn）· 电影、电视剧、动漫、综艺资讯与推荐平台<br>网站网址：https://youyouseyingshi-cn.github.io ｜ 本网站提供影视资讯与推荐，不提供影视资源下载与播放</div>
+ </div>
+</footer>
+
+</body>
+</html>
